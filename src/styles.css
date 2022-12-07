@@ -1,0 +1,20 @@
+.bg-general {
+  background-color: #ffffff;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg-card {
+  background-image: url("assets/bg_card.jpg"); 
+
+}
+
+.card-styles {
+  width: 18rem;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.card-styles:hover {
+  transform: scale(1.05);
+}

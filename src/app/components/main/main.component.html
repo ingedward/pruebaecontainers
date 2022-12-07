@@ -1,0 +1,52 @@
+<div class="container-fluid bg-general">
+  <app-header></app-header>
+  <div class="container">
+    <div class="row mb-4 d-flex justify-content-center">
+      <div class="col-xl-7 col-md-6 col-sm">
+        <form action="">
+          <input
+            #inputSearch
+            autofocus
+            class="form-control form-control-lg"
+            type="text"
+            placeholder="Buscar personaje"
+            (keyup)="Search(inputSearch.value)"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center" *ngIf="load">
+      <h1 class="text-center">Loading</h1>
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class=""></span>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-evenly" *ngIf="items">
+      <div
+        class="col mb-3 mt-3 d-flex justify-content-center"
+        *ngFor="let hero of renderHeroes"
+      >
+        <div
+          [routerLink]="['/hero', hero.id]"
+          class="card p-4 bg-card shadow card-styles"
+        >
+          <img [src]="hero.images.sm" class="card-img-top" [alt]="hero.name" />
+          <div class="card-body text-white">
+            <h3 class="text-center fw-bold">{{ hero.name }}</h3>
+            <p class="card-text m-0">
+              Intelligence: {{ hero.powerstats.intelligence }}
+            </p>
+            <p class="card-text m-0">Speed: {{ hero.powerstats.speed }}</p>
+            <p class="card-text m-0">Power: {{ hero.powerstats.power }}</p>
+            <p class="card-text m-0">Gender: {{ hero.appearance.gender }}</p>
+            <p class="card-text m-0">Race: {{ hero.appearance.race }}</p>
+            <p class="card-text text-end m-0">{{ hero.id }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center" *ngIf="void">
+      <h1 class="text-center">No se encontró ningún registro...</h1>
+    </div>
+  </div>
+</div>
